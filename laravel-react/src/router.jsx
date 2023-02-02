@@ -11,6 +11,24 @@ import Dashboard from "./pages/Dashboard";
 export const router = createBrowserRouter([
   {
     path: "/",
+    element: <HomeLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Navigate to="/users" />,
+      },
+      {
+        path: "/users",
+        element: <Users />,
+      },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
+    ],
+  },
+  {
+    path: "/",
     element: <GuestLayout />,
     children: [
       {
@@ -23,25 +41,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/",
-    element: <HomeLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Navigate to="/dashboard" />,
-      },
-      {
-        path: "/users",
-        element: <Users />,
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
-      },
-    ],
-  },
-
   {
     path: "*",
     element: <NotFound />,
