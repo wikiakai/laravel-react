@@ -16,11 +16,14 @@ baseApi.interceptors.response.use(
     return response;
   },
   (error) => {
-    const { response } = error;
-    if (response.status === 401) {
-      localStorage.removeItem("ACCESS_TOKEN");
+    try {
+      const { response } = error;
+      if (response.status === 401) {
+        localStorage.removeItem("ACCESS_TOKEN");
+      }
+    } catch (error) {
+      console.error(error);
     }
-    throw error;
   }
 );
 

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
-import baseApi from "../axiosClient";
+import baseApi from "../axiosClient.js";
 import { useStateContext } from "../contexts/ContextProvider";
 const SignUp = () => {
   const nameRef = useRef();
@@ -16,7 +16,7 @@ const SignUp = () => {
       name: nameRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
-      password_confirm: passwordConfirmRef.current.value,
+      password_confirmation: passwordConfirmRef.current.value,
     };
 
     baseApi
@@ -46,7 +46,7 @@ const SignUp = () => {
             ref={passwordConfirmRef}
             placeholder="Password Confirmation"
           />
-          <button className="btn btn-block">Login</button>
+          <button className="btn btn-block">Sign Up</button>
           <p className="message">
             Already have account? <Link to="/login">Login</Link>
           </p>
